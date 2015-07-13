@@ -1,17 +1,21 @@
 <?php
 // index.php
+require_once 'vendor/autoload.php';
 
-// carga e inicia algunas librerías globales
-require_once 'model.php';
-require_once 'controllers.php';
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-// encamina la petición internamente
-$uri = $_SERVER['REQUEST_URI'];
-if ($uri == '/index.php') {
-    list_action();
-} elseif ($uri == '/index.php/show' && isset($_GET['id'])) {
-    show_action($_GET['id']);
+$request = Request::createFromGlobals();
+
+$uri = $request->getPathInfo();
+if ($uri == '/') {
+    $response = list_action();
+} elseif ($uri == '/show' && $request->query->has('id')) {
+    $response = show_action($request->query->get('id'));
 } else {
-    header('Status: 404 Not Found');
-    echo '<html><body><h1>Page Not Found</h1></body></html>';
+    $html = '<html><body><h1>Page Not Found</h1></body></html>';
+    $response = new Response($html, 404);
 }
+
+// envía las cabeceras y la respuesta
+$response->send();
