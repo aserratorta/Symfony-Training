@@ -11,6 +11,14 @@ web/css/*
 web/js/*
 web/uploads/*
 
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/app/phpunit.xml
+/bin/
+/composer.phar
+/vendor/
+
+
 # -- Composer -----------------------------------------
 composer.phar
 
@@ -85,3 +93,6 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+
+
+
