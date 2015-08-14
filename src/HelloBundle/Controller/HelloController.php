@@ -1,11 +1,13 @@
+<?php
+
 namespace HelloBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class HelloController
+class HelloController extends Controller
 {
-public function indexAction($name)
-{
-return new Response('<html><body>Hello '.$name.'!</body></html>');
-}
+    public function indexAction($name)
+    {
+        return $this->render('HelloBundle:Hello:index.html.php', array('name' => $name));
+    }
 }
