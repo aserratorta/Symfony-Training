@@ -1,8 +1,10 @@
+<?php
+
 namespace HelloBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Symfony\Component\HttpFoundation\Response;
 
-class HelloController extends Controller
+class HelloController
 {
 public function indexAction($name)
 {
