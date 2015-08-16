@@ -2,12 +2,12 @@
 
 namespace HelloBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class HelloController extends Controller
 {
-    public function indexAction()
+    public function indexAction($name)
     {
-        return new RedirectResponse($this->generateUrl('homepage'));
+        return new Response('<html><body>Hello '.$name.'!</body></html>');
     }
 }
