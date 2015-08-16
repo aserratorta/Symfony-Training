@@ -1,16 +1,13 @@
 <?php
 
 namespace HelloBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class HelloController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('HelloBundle:Hello:index.html.twig', array('name' => $name));
-
-        // si utilizas PHP en vez de Twig
-        // return $this->render('AcmeHelloBundle:Hello:index.html.php', array('name' => $name));
+        return new RedirectResponse($this->generateUrl('homepage'));
     }
 }
