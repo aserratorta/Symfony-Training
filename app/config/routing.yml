@@ -1,3 +1,11 @@
-hello:
-    path:         /hello/{name}
-    defaults:     { _controller: HelloBundle:Hello:index }
+test_homepage:
+    path:     /
+    defaults: { _controller: TestBundle:Default:index }
+
+test_servicios:
+    path:     /servicios
+    defaults: { _controller: TestBundle:Default:servicios }
+
+test_contactos:
+    path:     /contactos
+    defaults: { _controller: TestBundle:Default:contactos }

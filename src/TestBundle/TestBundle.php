@@ -1,5 +1,6 @@
 <?php
-namespace Prova\TestBundle;
+
+namespace TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
