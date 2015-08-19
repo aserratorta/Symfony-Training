@@ -9,3 +9,7 @@ test_servicios:
 test_contactos:
     path:     /contactos
     defaults: { _controller: TestBundle:Default:contactos }
+
+test_proyectos:
+    path:     /proyectos
+    defaults: { _controller: TestBundle:Default:proyectos }

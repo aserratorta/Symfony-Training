@@ -20,4 +20,9 @@ class DefaultController extends Controller
     {
         return $this->render('TestBundle:Default:contactos.html.twig', array());
     }
+
+    public function proyectosAction()
+    {
+        return $this->render('TestBundle:Default:proyectos.html.twig', array());
+    }
 }
