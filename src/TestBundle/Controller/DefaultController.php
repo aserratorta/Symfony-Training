@@ -25,4 +25,14 @@ class DefaultController extends Controller
     {
         return $this->render('TestBundle:Default:proyectos.html.twig', array());
     }
+
+    public function baseAction()
+    {
+        return $this->render('TestBundle:Default:base.html.twig', array());
+    }
+
+    public function fillaAction()
+    {
+        return $this->render('TestBundle:Default:filla.html.twig', array());
+    }
 }
