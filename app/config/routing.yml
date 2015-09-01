@@ -21,3 +21,7 @@ test_base:
 test_filla:
     path:     /filla
     defaults: { _controller: TestBundle:Default:filla }
+
+test_productos:
+    path:     /productos
+    defaults: { _controller: TestBundle:Default:productos }

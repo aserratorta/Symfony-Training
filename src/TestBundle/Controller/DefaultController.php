@@ -3,6 +3,8 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use TestBundle\Entity\Producto;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -34,5 +36,24 @@ class DefaultController extends Controller
     public function fillaAction()
     {
         return $this->render('TestBundle:Default:filla.html.twig', array());
+    }
+
+    public function createAction()
+    {
+        $product = new Producto();
+        $product->setNom('A Foo Bar');
+        $product->setPreu('19.99');
+        $product->setDescripcio('Lorem ipsum dolor');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return new Response('Created product id '.$product->getId());
+    }
+
+    public function productosAction()
+    {
+        return $this->render('TestBundle:Default:productos.html.twig', array());
     }
 }
