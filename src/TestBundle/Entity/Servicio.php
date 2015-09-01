@@ -1,16 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anton
- * Date: 26/08/15
- * Time: 23:26
- */
+
+namespace TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="product")
+ * @ORM\Table(name="service")
  */
 class Servicio
 {

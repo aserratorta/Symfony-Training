@@ -5,32 +5,35 @@ namespace TestBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Proyecto
+ * @ORM\Entity
+ * @ORM\Table(name="project")
  */
 class Proyecto
 {
     /**
-     * @var integer
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      */
     private $titol;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=20)
      */
     private $nomautor;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=20)
      */
     private $cognomautor;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(type="date")
      */
     private $redaccio;
 
