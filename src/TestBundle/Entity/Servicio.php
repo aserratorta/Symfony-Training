@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="service")
  */
-class Servicio
+class Service
 {
     /**
      * @ORM\Id

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="product")
  */
-class Producto
+class Product
 {
     /**
      * @ORM\Column(type="integer")
@@ -20,20 +20,19 @@ class Producto
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $nom;
+    private $name;
 
     /**
      * @ORM\Column(type="decimal")
      */
-    private $preu;
+    private $price;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $descripcio;
+    private $description;
 
-
-    /**
+       /**
      * Get id
      *
      * @return integer 
@@ -44,71 +43,72 @@ class Producto
     }
 
     /**
-     * Set nom
+     * Set name
      *
-     * @param string $nom
-     * @return Producto
+     * @param string $name
+     * @return Product
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string 
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
 
     /**
-     * Set preu
+     * Set price
      *
-     * @param string $preu
-     * @return Producto
+     * @param string $price
+     * @return Product
      */
-    public function setPreu($preu)
+    public function setPrice($price)
     {
-        $this->preu = $preu;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get preu
+     * Get price
      *
      * @return string 
      */
-    public function getPreu()
+    public function getPrice()
     {
-        return $this->preu;
+        return $this->price;
     }
 
     /**
-     * Set descripcio
+     * Set description
      *
-     * @param string $descripcio
-     * @return Producto
+     * @param string $description
+     * @return Product
      */
-    public function setDescripcio($descripcio)
+    public function setDescription($description)
     {
-        $this->descripcio = $descripcio;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descripcio
+     * Get description
      *
      * @return string 
      */
-    public function getDescripcio()
+    public function getDescription()
     {
-        return $this->descripcio;
+        return $this->description;
     }
-}
+
+ }

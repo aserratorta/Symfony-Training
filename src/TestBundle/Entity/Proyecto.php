@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="project")
  */
-class Proyecto
+class Project
 {
     /**
      * @ORM\Id
@@ -20,22 +20,22 @@ class Proyecto
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titol;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $nomautor;
+    private $authorname;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $cognomautor;
+    private $authorsurname;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $redaccio;
+    private $redaction;
 
 
     /**
@@ -49,94 +49,84 @@ class Proyecto
     }
 
     /**
-     * Set titol
+     * Set title
      *
-     * @param string $titol
-     * @return Proyecto
+     * @param string $title
+     * @return Project
      */
-    public function setTitol($titol)
+    public function setTitle($title)
     {
-        $this->titol = $titol;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get titol
+     * Get title
      *
      * @return string 
      */
-    public function getTitol()
+    public function getTitle()
     {
-        return $this->titol;
+        return $this->title;
     }
 
     /**
-     * Set nomautor
+     * Set authorname
      *
-     * @param string $nomautor
-     * @return Proyecto
+     * @param string $authorname
+     * @return Project
      */
-    public function setNomautor($nomautor)
+    public function setAuthorname($authorname)
     {
-        $this->nomautor = $nomautor;
+        $this->authorname = $authorname;
 
         return $this;
     }
 
     /**
-     * Get nomautor
+     * Get authorname
      *
      * @return string 
      */
-    public function getNomautor()
+    public function getAuthorname()
     {
-        return $this->nomautor;
+        return $this->authorname;
     }
 
     /**
-     * Set cognomautor
+     * Set authorsurname
      *
-     * @param string $cognomautor
-     * @return Proyecto
+     * @param string $authorsurname
+     * @return Project
      */
-    public function setCognomautor($cognomautor)
+    public function setAuthorsurname($authorsurname)
     {
-        $this->cognomautor = $cognomautor;
+        $this->authorsurname = $authorsurname;
+
+        return $this->authorsurname;
+    }
+
+    /**
+     * get redaction
+     *
+     * @return mixed
+     */
+    public function getRedaction()
+    {
+        return $this->redaction;
+    }
+
+    /**
+     * Set redaction
+     *
+     * @param mixed $redaction
+     * @return Project
+     */
+    public function setRedaction($redaction)
+    {
+        $this->redaction = $redaction;
 
         return $this;
-    }
-
-    /**
-     * Get cognomautor
-     *
-     * @return string 
-     */
-    public function getCognomautor()
-    {
-        return $this->cognomautor;
-    }
-
-    /**
-     * Set redaccio
-     *
-     * @param \DateTime $redaccio
-     * @return Proyecto
-     */
-    public function setRedaccio($redaccio)
-    {
-        $this->redaccio = $redaccio;
-
-        return $this;
-    }
-
-    /**
-     * Get redaccio
-     *
-     * @return \DateTime 
-     */
-    public function getRedaccio()
-    {
-        return $this->redaccio;
     }
 }

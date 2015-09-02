@@ -3,7 +3,7 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use TestBundle\Entity\Producto;
+use TestBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -40,10 +40,10 @@ class DefaultController extends Controller
 
     public function createAction()
     {
-        $product = new Producto();
-        $product->setNom('A Foo Bar');
-        $product->setPreu('19.99');
-        $product->setDescripcio('Lorem ipsum dolor');
+        $product = new Product();
+        $product->setName('A Foo Bar');
+        $product->setPrice('19.99');
+        $product->setDescription('Lorem ipsum dolor');
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);
