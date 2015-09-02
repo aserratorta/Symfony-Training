@@ -37,6 +37,13 @@ class Product
      *
      * @return integer 
      */
+
+    /**
+     * @ORM\ManyToOne(targetEntity="category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
     public function getId()
     {
         return $this->id;
