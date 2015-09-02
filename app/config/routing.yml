@@ -2,9 +2,9 @@ test_homepage:
     path:     /
     defaults: { _controller: TestBundle:Default:index }
 
-test_servicios:
+test_services:
     path:     /servicios
-    defaults: { _controller: TestBundle:Default:servicios }
+    defaults: { _controller: TestBundle:Default:services }
 
 test_contactos:
     path:     /contactos

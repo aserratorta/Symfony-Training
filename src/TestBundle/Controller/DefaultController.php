@@ -13,7 +13,7 @@ class DefaultController extends Controller
         return $this->render('TestBundle:Default:index.html.twig', array());
     }
 
-    public function serviciosAction()
+    public function servicesAction()
     {
         return $this->render('TestBundle:Default:servicios.html.twig', array());
     }
