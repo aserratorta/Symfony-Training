@@ -118,4 +118,27 @@ class Product
         return $this->description;
     }
 
+    /**
+     * Set category
+     *
+     * @param \TestBundle\Entity\category $category
+     * @return Product
+     */
+    public function setCategory(\TestBundle\Entity\category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \TestBundle\Entity\category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
  }
