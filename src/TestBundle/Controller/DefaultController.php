@@ -52,7 +52,7 @@ class DefaultController extends Controller
         return new Response('Created product id '.$product->getId());
     }
 
-    public function productosAction()
+    public function productsAction()
     {
         return $this->render('TestBundle:Default:productos.html.twig', array());
     }

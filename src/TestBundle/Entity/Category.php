@@ -72,10 +72,10 @@ class Category
     /**
      * Add products
      *
-     * @param \TestBundle\Entity\product $products
+     * @param \TestBundle\Entity\Product $product
      * @return Category
      */
-    public function addProduct(\TestBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -85,9 +85,9 @@ class Category
     /**
      * Remove products
      *
-     * @param \TestBundle\Entity\product $products
+     * @param \TestBundle\Entity\Product $product
      */
-    public function removeProduct(\TestBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }

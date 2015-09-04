@@ -124,7 +124,7 @@ class Product
      * @param \TestBundle\Entity\category $category
      * @return Product
      */
-    public function setCategory(\TestBundle\Entity\Category $category = null)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
