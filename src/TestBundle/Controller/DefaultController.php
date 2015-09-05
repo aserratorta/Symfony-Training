@@ -3,6 +3,7 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use TestBundle\Entity\Category;
 use TestBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -38,22 +39,33 @@ class DefaultController extends Controller
         return $this->render('TestBundle:Default:filla.html.twig', array());
     }
 
-    public function createAction()
+    public function createProductAction()
     {
+        $category = new Category();
+        $category->setName('Main Products');
+
         $product = new Product();
-        $product->setName('A Foo Bar');
-        $product->setPrice('19.99');
-        $product->setDescription('Lorem ipsum dolor');
+        $product->setName('Foo');
+        $product->setPrice(19.99);
+        // relaciona este producto con una categoría
+        $product->setCategory($category);
 
         $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
         $em->persist($product);
         $em->flush();
 
-        return new Response('Created product id '.$product->getId());
+        return new Response('Created product id: '.$product->getId()
+            .' and category id: '.$category->getId()
+        );
     }
 
-    public function productsAction()
+    public function ShowProductsAction()
     {
-        return $this->render('TestBundle:Default:productos.html.twig', array());
+        $products = $this->getDoctrine()
+            ->getRepository('TestBundle:Product')
+            ->findAll();
+
+        return $this->render('TestBundle:Default:productos.html.twig', array($products));
     }
 }

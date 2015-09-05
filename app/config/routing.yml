@@ -24,4 +24,4 @@ test_filla:
 
 test_productos:
     path:     /productos
-    defaults: { _controller: TestBundle:Default:products }
+    defaults: { _controller: TestBundle:Default:ShowProducts }
