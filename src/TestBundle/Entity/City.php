@@ -3,6 +3,7 @@
 namespace TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use TestBundle\Util\Util;
 
 /**
  * @ORM\Entity
@@ -47,8 +48,7 @@ class City
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
+        $this->slug = Util::getSlug($name);
     }
 
     /**
@@ -88,4 +88,5 @@ class City
     {
         return $this->getName();
     }
+
 }
