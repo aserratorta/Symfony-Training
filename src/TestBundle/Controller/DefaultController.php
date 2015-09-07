@@ -3,8 +3,11 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use TestBundle\Entity\Category;
-use TestBundle\Entity\Product;
+use TestBundle\Entity\City;
+use TestBundle\Entity\Shop;
+use TestBundle\Entity\Offer;
+use TestBundle\Entity\User;
+use TestBundle\Entity\Sale;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller

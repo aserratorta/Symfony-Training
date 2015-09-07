@@ -32,7 +32,7 @@ class Product
      */
     private $description;
 
-       /**
+     /**
      * Get id
      *
      * @return integer 
