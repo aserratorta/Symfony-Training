@@ -25,15 +25,9 @@ class DefaultController extends Controller
         return $this->render('TestBundle:Default:front.html.twig', array('offer' => $offer));
     }
 
-    public function helpAction()
+    public function staticAction($page)
     {
-        return $this->render('TestBundle:Default:help.html.twig', array());
-    }
-
-    public function contactAction()
-    {
-        return $this->render('TestBundle:Default:contact.html.twig', array());
-
+        return $this->render('TestBundle:Default:'.$page.'.html.twig');
     }
 
     public function dayofferAction()

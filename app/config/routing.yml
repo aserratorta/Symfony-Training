@@ -3,12 +3,8 @@ front:
     defaults: { _controller: TestBundle:Default:front }
 
 static_page:
-    path:     /sitio/help
-    defaults: { _controller: TestBundle:Default:help}
-
-static_page:
-    path:     /sitio/contact
-    defaults: { _controller: TestBundle:Default:contact}
+    pattern:  /sitio/{page}
+    defaults: { _controller: TestBundle:Default:static}
 
 day_offer:
     path:     /dayoffer
