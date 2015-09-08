@@ -1,0 +1,31 @@
+<header>
+    <h1><a href="{{  path('front') }}">OFERTES</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{{  path('front') }}">Oferta del dia</a></li>
+            <li><a href="#">Ofertes recents</a></li>
+        </ul>
+    </nav>
+</header>
+
+<footer>
+    &copy; {{  'now' |date('Y') }}-
+    <a href="{{ path('static_page', {'page':'help'}) }}">
+        Ajuda
+    </a>
+    <a href="{{ path('static_page', {'page':'contact'}) }}">
+        Contacte
+    </a>
+    <a href="{{ path('static_page', {'page':'privacity'}) }}">
+        Privacitat
+    </a>
+    <a href="{{ path('static_page', {'page':'about_us'}) }}">
+        Sobre natros
+    </a>
+</footer>
+
+<section class="description">
+    <h1><a href="{{ path('day_offer')}}">{{ offer }}</a> </h1>
+    {{ offer }}
+    <a class="boton" href="#">Comprar</a>
+</section>

@@ -10,10 +10,8 @@
 
 namespace TestBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\ContainerAwareInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use TestBundle\Entity\Sale;
 /**
@@ -59,7 +57,7 @@ class Sales extends AbstractFixture implements OrderedFixtureInterface
 
                 $manager->persist($sale);
 
-                $offer->setCompras($offer->getCompras() + 1);
+                $offer->setShopping($offer->getShopping() + 1);
                 $manager->persist($offer);
             }
 

@@ -5,7 +5,8 @@ namespace TestBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use TestBundle\Entity\Offer;
 
@@ -158,8 +159,8 @@ class Offers extends AbstractFixture implements FixtureInterface, OrderedFixture
             'Válido solamente para comidas, no para cenas.',
         ));
 
-        $phrasesNumber = rand(2, 4);
+        $phraseNumber = rand(2, 4);
 
-        return implode(' ', array_rand($phrases, $phrasesNumber));
+        return implode(' ', array_rand($phrases, $phraseNumber));
     }
 }
