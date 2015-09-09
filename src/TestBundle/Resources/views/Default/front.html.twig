@@ -25,7 +25,53 @@
 </footer>
 
 <section class="description">
-    <h1><a href="{{ path('day_offer')}}">{{ offer }}</a> </h1>
-    {{ offer }}
+    <h1><a href="{{ path('day_offer')}}">{{ offer.name }}</a> </h1>
+    {{ offer.description }}
     <a class="boton" href="#">Comprar</a>
 </section>
+
+<section class="gallery">
+    <img alt="Offer's picture" src="{{ asset('uploads/images/' ~
+    offer.picture) }}">
+
+    <p class="price">{{ offer.price }} &euro; <span>{{ offer.discount }}</span></p>
+
+    <p><strong>Condicions:</strong> {{ offer.conditions }}</p>
+</section>
+
+<section class="estate">
+    <div class="time">
+        <strong>Manquen</strong>: {{  offer.expirationDate | date() }}
+    </div>
+
+    <div class="shopping">
+        <strong>Compres</strong>: {{ offer.shopping }}
+    </div>
+
+    <div class="faltan">
+        {% set faltan = offer.threshold - offer.shopping %}
+        {% if faltan > 0 %}
+            Falten <strong>{{ faltan }} shopping</strong> <br/>
+            per a activar la oferta
+        {% else %}
+            <strong>Oferta activada</strong> per superar les
+            <strong>{{ offer.threshold }}</strong> compres necessàries
+        {% endif %}
+    </div>
+</section>
+
+<section class="address">
+    <h2>Disfruti de l'oferta a</h2>
+    <p>
+        <a href="#">{{ offer.shop.name }}</a>
+        {{ offer.shop.address }}
+    </p>
+</section>
+
+<section class="shop">
+    <h2>Sobre la tenda</h2>
+    {{ offer.shop.description }}
+</section>
+
+
+
