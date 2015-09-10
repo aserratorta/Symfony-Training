@@ -3,49 +3,32 @@
 {% set ciudadSeleccionada = app.request.attributes.get('city', ciudad_por_defecto) %}
 
 {% block stylesheets %}
-{% stylesheets '@OfertaBundle/Resources/public/css/normalizar.css'
-               '@OfertaBundle/Resources/public/css/comun.css'
-               '@OfertaBundle/Resources/public/css/frontend.css'
-               output='css/frontend.css' %}
-<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
-{% endstylesheets %}
+    <link href="{{ asset('/css/normalizar.css') }}"
+          rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/comun.css') }}"
+          rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/frontend.css') }}"
+          rel="stylesheet" type="text/css" />
 {% endblock %}
-
-{% block javascripts %}
-{% javascripts '@OfertaBundle/Resources/public/js/lt_ie9/*' output='js/lt_ie9.js' %}
-<!--[if lt IE 9]>
-    <script src="{{ asset_url }}"></script>
-<![endif]-->
-{% endjavascripts %}  
-{% javascripts '@OfertaBundle/Resources/public/js/frontend/*' output='js/frontend.js' %}
-<script src="{{ asset_url }}" type="text/javascript"></script>
-{% endjavascripts %}
-{% endblock %}
+{% block javascripts %}{% endblock %}
 
 {% block body %}
 <header>
-    <h1><a href="{{ path('front', { 'ciudad': ciudadSeleccionada }) }}">CUPON</a></h1>
+    <h1><a href="{{ path('front', { 'city': ciudadSeleccionada }) }}">Syymfony</a></h1>
     <nav>
         <ul>
-            <li><a href="{{ path('front', { 'city': ciudadSeleccionada }) }}">{{ "Oferta del día" | trans }}</a></li>
-            <li><a href="{{ path('ciudad_recientes', { 'ciudad': ciudadSeleccionada }) }}">{{ "Ofertas recientes" | trans }}</a></li>
-            <li><a href="{{ path('usuario_compras') }}">{{ "Mis ofertas" | trans }}</a></li>
-            <li>{{ render(controller('CiudadBundle:Default:listaCiudades', { 'ciudad': ciudadSeleccionada })) }}</li>
+            <li><a href="{{ path('front') }}">Oferta del día</a></li>
+            <li><a href="{{ path('#') }}">Ofertas recientes</a></li>
+            <li><a href="{{ path('#') }}">Mis ofertas</a></li>
         </ul>
     </nav>
 </header>
 
-{% block anuncio %}{% endblock %}
-
-<article {{ block('id') in ['portada', 'oferta'] ? ' class="oferta"' : '' }}>
+<article>
     {% block article %}{% endblock %}
 </article>
 
 <aside>
-    {% block aside %}
-    <section id="login">
-        {{ render_esi(controller('UsuarioBundle:Default:cajaLogin', { 'id': block('id') })) }}
-    </section>
-    {% endblock %}
+    {% block aside %}{% endblock %}
 </aside>
 {% endblock %}
