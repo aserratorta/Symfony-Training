@@ -35,7 +35,7 @@ class Offers extends AbstractFixture implements FixtureInterface, OrderedFixture
         $shops = $manager->getRepository('TestBundle:Shop')->findAll();
 
         foreach ($cities as $city) {
-            $shops = $manager->getRepository('TestBundle:Shop')->findBy(array
+            $shops = $manager->getRepository('TestBundle:Shop')->findByCiudad(
                 $city->getId()
             );
 

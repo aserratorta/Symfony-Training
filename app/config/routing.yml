@@ -1,4 +1,10 @@
+# Complete front's path (with city's slug)
 front:
+    path:     /{city}
+    defaults: { _controller: TestBundle:Default:front }
+
+# Symple front's path
+_front:
     path:     /
     defaults: { _controller: TestBundle:Default:front }
 

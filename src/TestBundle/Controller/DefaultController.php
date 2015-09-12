@@ -3,24 +3,33 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use TestBundle\Entity\City;
-use TestBundle\Entity\Shop;
 use TestBundle\Entity\Offer;
-use TestBundle\Entity\User;
-use TestBundle\Entity\Sale;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
-    public function frontAction()
+    public function frontAction($city = null)
     {
+        if (null == $city) {
+            $city = $this->container
+                ->getParameter('symfony.defaultcity');
+
+            return new RedirectResponse(
+                $this->generateUrl('front', array('city' => $city))
+            );
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
-        $offer = $em->getRepository('TestBundle:Offer')->findOneBy(
-            array(
-                'city' => 1,
+
+        $offer = $em->getRepository('TestBundle:Offer')->findOneBy(array(
+                'city' => $city,
                 'publicationDate' => new \DateTime('today')
-            )
-        );
+            ));
+
+        if (!$offer) {
+            throw $this->createNotFoundException(
+                'No se ha encontrado ninguna oferta del día en la ciudad seleccionada');
+        }
 
         return $this->render('TestBundle:Default:front.html.twig', array('offer' => $offer));
     }
@@ -32,7 +41,10 @@ class DefaultController extends Controller
 
     public function dayofferAction()
     {
-        return $this->render('TestBundle:Default:dayoffer.html.twig', array());
+        $offer = $em->getRepository('TestBoundle:Offer')->findOneBy(array(
+            'city'            => 1,
+            'publicationDate' => new \DateTime('today')
+        ));
     }
 
 }
