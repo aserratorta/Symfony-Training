@@ -14,5 +14,5 @@ static_page:
 
 day_offer:
     path:     /dayoffer
-    defaults: { _controller: TestBundle:Default:dayoffer}
+    defaults: { _controller: TestBundle:Default:findDayOffer}
 

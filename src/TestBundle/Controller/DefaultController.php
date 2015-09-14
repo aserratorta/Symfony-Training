@@ -39,9 +39,11 @@ class DefaultController extends Controller
         return $this->render('TestBundle:Default:'.$page.'.html.twig');
     }
 
-    public function dayofferAction()
+    public function findDayOfferAction()
     {
-        $offer = $em->getRepository('TestBoundle:Offer')->findOneBy(array(
+        $em = $this->getDoctrine()->getEntityManager();
+        $offer = $em->getRepository('TestBoundle:Offer')
+                    ->findDayOffer(array(
             'city'            => 1,
             'publicationDate' => new \DateTime('today')
         ));
