@@ -1,0 +1,18 @@
+<select id="chosencity">
+    {% for city in cities %}
+    <option value="{{ city.slug }}"
+            data-url="{{ url('change_city',{ 'city': city.slug}) }}">
+        {{ city.name }}
+    </option>
+    {% endfor %}
+</select>
+
+<script type="text/javascript">
+    var list = document.getElementById('chosencity');
+    var city = list.options[list.selectedIndex].value;
+
+    list.onchange = function() {
+        var url = list.options[list.selectedIndex].getAttribute('data-url');
+        window.location = url;
+    };
+</script>

@@ -12,7 +12,7 @@ class DefaultController extends Controller
     {
         if (null == $city) {
             $city = $this->container
-                ->getParameter('symfony.defaultcity');
+                         ->getParameter('symfony.defaultcity');
 
             return new RedirectResponse(
                 $this->generateUrl('front', array('city' => $city))
@@ -47,6 +47,25 @@ class DefaultController extends Controller
             'city'            => 1,
             'publicationDate' => new \DateTime('today')
         ));
+    }
+
+    public function changeAction($city)
+    {
+        return new RedirectResponse($this->generateUrl(
+            'front',
+            array('city'=> $city)
+        ));
+    }
+
+    public function cityListAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $cities = $em->getRepository('TestBundle:City')->findAll();
+
+        return $this->render(
+            'TestBundle:Default:cityList.html.twig',
+            array('cities' => $cities)
+        );
     }
 
 }
