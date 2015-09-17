@@ -12,10 +12,6 @@ static_page:
     pattern:  /sitio/{page}
     defaults: { _controller: TestBundle:Default:static}
 
-day_offer:
-    path:     /dayoffer
-    defaults: { _controller: TestBundle:Default:findDayOffer}
-
 change_city:
     pattern: /city/changeto-to-{city}
     defaults: { _controller: TestBundle:Default:change }

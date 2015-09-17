@@ -9,19 +9,14 @@ class OfferRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
 
-        $dql = 'SELECT o, c, s
+        $query = $em->createQuery('SELECT o
                 FROM TestBundle:Offer o
-                JOIN o.city c JOIN o.shop s
-                WHERE o.checked = true
-                AND o.publicationDate < :date
-                and c.slug = :city
-                ORDER  BY o.publicationDate DESC';
+                JOIN o.city c
+                WHERE c.slug = :city
+                AND o.publicationDate = :date');
 
-        $query=$em->createQuery($dql);
-        $query->setParameter('date', new\DateTime('now'));
-        $query->setParameter('city', $city);
-        $query->setMaxResults(1);
-
-        return $query->getSingleResult();
+        $query->setParameter('city' , 'barcelona');
+        $query->setParameter('date', '201X-XX-XX 00:00:00');
+        $offer = $query->getResult();
     }
 }
