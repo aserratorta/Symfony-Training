@@ -5,6 +5,7 @@ namespace TestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TestBundle\Entity\Offer;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -54,7 +55,10 @@ class DefaultController extends Controller
 
         return $this->render(
             'TestBundle:Default:cityList.html.twig',
-            array('cities' => $cities)
+            array(
+                'currentCity' => $city,
+                'cities' => $cities
+            )
         );
     }
 
