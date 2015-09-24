@@ -30,7 +30,7 @@ class Shops extends AbstractFixture implements OrderedFixtureInterface, Containe
     public function load(ObjectManager $manager)
     {
         // Obtener todas las ciudades de la base de datos
-        $cities = $manager->getRepository('CiudadBundle:Ciudad')->findAll();
+        $cities = $manager->getRepository('TestBundle:City')->findAll();
 
         $i = 1;
         foreach ($cities as $city) {

@@ -37,10 +37,11 @@ class Cities implements  FixtureInterface
             'Tarrasa',
         );
 
-        foreach ($cities as $city) {
-            $entity = new City();
-            $entity->setName($city['name']);
-            $manager->persist($entity);
+        foreach ($cities as $name) {
+            $city = new City();
+            $city->setName($name);
+
+            $manager->persist($city);
         }
 
         $manager->flush();

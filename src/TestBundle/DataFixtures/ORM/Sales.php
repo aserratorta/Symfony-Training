@@ -33,7 +33,7 @@ class Sales extends AbstractFixture implements OrderedFixtureInterface
 
         foreach ($users as $user) {
             $shopping = rand(0, 3);
-            $comprado = array();
+            $bought = array();
 
             for ($i=0; $i<$shopping; $i++) {
                 $sale = new Sale();
@@ -45,12 +45,12 @@ class Sales extends AbstractFixture implements OrderedFixtureInterface
                 //   - si la oferta seleccionada ha sido revisada
                 //   - si la fecha de publicación de la oferta es posterior a ahora mismo
                 $offer = $offers[array_rand($offers)];
-                while (in_array($offer->getId(), $comprado)
+                while (in_array($offer->getId(), $bought)
                        || $offer->getChecked() == false
                        || $offer->getPublicationDate() > new \DateTime('now')) {
                     $offer = $offers[array_rand($offers)];
                 }
-                $comprado[] = $offer->getId();
+                $bought[] = $offer->getId();
 
                 $sale->setOffer($offer);
                 $sale->setUser($user);
@@ -61,7 +61,7 @@ class Sales extends AbstractFixture implements OrderedFixtureInterface
                 $manager->persist($offer);
             }
 
-            unset($comprado);
+            unset($bought);
         }
 
         $manager->flush();
