@@ -7,6 +7,10 @@ security:
         in_memory:
             memory: ~
 
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        TestBundle\Entity\Shop: plaintext
+
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

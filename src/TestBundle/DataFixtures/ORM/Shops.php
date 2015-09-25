@@ -47,7 +47,6 @@ class Shops extends AbstractFixture implements OrderedFixtureInterface, Containe
                 $encoder = $this->container->get('security.encoder_factory')->getEncoder($shop);
                 $passwordCodificado = $encoder->encodePassword($passwordEnClaro, $shop->getSalt());
                 $shop->setPassword($passwordCodificado);
-
                 $shop->setDescription($this->getDescription());
                 $shop->setAddress($this->getAddress($city));
                 $shop->setCity($city);
