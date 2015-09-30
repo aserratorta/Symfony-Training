@@ -115,7 +115,7 @@ class Shops extends AbstractFixture implements OrderedFixtureInterface, Containe
      * @param  City $city Objeto de la ciudad para la que se genera una dirección postal.
      * @return string         Dirección postal aleatoria generada para la tienda.
      */
-    private function getAddress(City $city)
+    private function getAddress($city)
     {
         $prefixes = array('Calle', 'Avenida', 'Plaza');
         $names = array(
