@@ -10,6 +10,7 @@ security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
         TestBundle\Entity\Shop: plaintext
+        TestBundle\Entity\User: plaintext
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

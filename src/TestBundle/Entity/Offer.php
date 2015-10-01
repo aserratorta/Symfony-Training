@@ -3,6 +3,7 @@
 namespace TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use TestBundle\Util\Util;
 
 /**
  * @ORM\Table(name="offer")
@@ -107,8 +108,7 @@ class Offer
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
+        $this->slug = Util::getSlug($name);
     }
 
     /**
