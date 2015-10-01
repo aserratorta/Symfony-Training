@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use TestBundle\Entity\Offer;
+use TestBundle\Util\Util;
 
 /**
  * Fixtures de la entidad Oferta.
@@ -43,6 +44,7 @@ class Offers extends AbstractFixture implements FixtureInterface, OrderedFixture
                 $offer = new Offer();
 
                 $offer->setName($this->getName());
+                $offer->setSlug(Util::getSlug($this->getName()));
                 $offer->setDescription($this->getDescription());
                 $offer->setConditions($this->getConditions());
                 $offer->setPicture('picture'.rand(1,20).'.jpg');
