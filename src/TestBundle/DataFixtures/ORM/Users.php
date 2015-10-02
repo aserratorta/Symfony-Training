@@ -7,7 +7,9 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use TestBundle\Entity\City;
 use TestBundle\Entity\User;
+
 /**
  * Fixtures de la entidad Usuario.
  * Crea 200 usuarios de prueba con información muy realista.
