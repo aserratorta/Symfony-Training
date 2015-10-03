@@ -4,6 +4,7 @@
         <ul>
             <li><a href="{{  path('front', {city: currentCity}) }}">Oferta del dia</a></li>
             <li><a href="#">Ofertes recents</a></li>
+            <li><a href="#">Les meves ofertes</a></li>
         </ul>
     </nav>
 </header>
@@ -32,8 +33,7 @@
 </section>
 
 <section class="gallery">
-    <img alt="Offer's picture" src="{{ asset('uploads/images/' ~
-    offer.picture) }}">
+    <img alt="Offer's picture" src="{{ asset(imagesfolder ~ offer.picture) }}">
 
     <p class="price">{{ offer.price }} &euro; <span>{{ offer.discount }}</span></p>
 

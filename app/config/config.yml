@@ -38,6 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         defaultcity: %symfony.defaultcity%
+        imagesfolder: '/uploads/images/'
 
 # Assetic Configuration
 assetic:
