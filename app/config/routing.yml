@@ -1,7 +1,17 @@
-acme_hello:
-    resource: "@AcmeHelloBundle/Resources/config/routing.php"
-    prefix:   /
+# Complete front's path (with city's slug)
+front:
+    path:     /{city}
+    defaults: { _controller: TestBundle:Default:front }
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+# Symple front's path
+_front:
+    path:     /
+    defaults: { _controller: TestBundle:Default:front }
+
+static_page:
+    pattern:  /sitio/{page}
+    defaults: { _controller: TestBundle:Default:static}
+
+change_city:
+    pattern: /city/change-to-{city}
+    defaults: { _controller: TestBundle:Default:change }

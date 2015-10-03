@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% set ChosenCity = app.request.attributes.has('city')
+        ? app.request.attributes.get('city')
+        : defaultcity %}
+
+{% block stylesheets %}
+    <link href="{{ asset('/css/normalizar.css') }}"
+          rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/comun.css') }}"
+          rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/frontend.css') }}"
+          rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block javascripts %}{% endblock %}
+
+{% block body %}
+<header>
+    <h1><a href="{{ path('front', { 'city': ChosenCity }) }}">Symfony</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{{ path('front') }}">Oferta del día</a></li>
+            <li><a href="{{ path('#') }}">Ofertas recientes</a></li>
+            <li><a href="{{ path('#') }}">Mis ofertas</a></li>
+
+            <li>{% render "TestBundle:Default:cityList" %}</li>
+        </ul>
+    </nav>
+</header>
+
+<article>
+    {% block article %}{% endblock %}
+</article>
+
+<aside>
+    {% block aside %}{% endblock %}
+</aside>
+{% endblock %}
