@@ -5,12 +5,12 @@
         : defaultcity %}
 
 {% block stylesheets %}
-    <link href="{{ asset('/css/normalizar.css') }}"
-          rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/css/comun.css') }}"
-          rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/css/frontend.css') }}"
-          rel="stylesheet" type="text/css" />
+    {% stylesheets '@TestBundle/Resources/public/css/normalizar.css'
+                   '@TestBundle/Resources/public/css/comun.css'
+                   '@TestBundle/Resources/public/css/frontend.css'
+                   output='css/frontend.css' %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
 {% endblock %}
 {% block javascripts %}{% endblock %}
 

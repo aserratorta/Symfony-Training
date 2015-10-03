@@ -31,8 +31,10 @@ class DefaultController extends Controller
         }
 
         $offer = $em->getRepository('TestBundle:Offer')->findOneBy(array(
-                'city' => $cityEntity, // you must search by a city instance, not by a slug string because offers are not related to cities by his slug...
-                'publicationDate' => new \DateTime('today') // be careful here, because today returns a '00:00:00' time but in your fixtures you are setting '23:59:59' time
+                'city' => $cityEntity, // you must search by a city instance,
+                // not by a slug string because offers are not related to cities by his slug...
+                'publicationDate' => new \DateTime('today') // be careful here,
+                // because today returns a '00:00:00' time but in your fixtures you are setting '23:59:59' time
             ));
         if (!$offer) {
             throw $this->createNotFoundException(
