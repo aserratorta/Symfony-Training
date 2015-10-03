@@ -1,8 +1,8 @@
 <header>
-    <h1><a href="{{  path('front') }}">OFERTES</a></h1>
+    <h1>OFERTES</h1>
     <nav>
         <ul>
-            <li><a href="{{  path('front') }}">Oferta del dia</a></li>
+            <li><a href="{{  path('front', {city: currentCity}) }}">Oferta del dia</a></li>
             <li><a href="#">Ofertes recents</a></li>
         </ul>
     </nav>
@@ -25,7 +25,7 @@
 </footer>
 
 <section class="description">
-    <h1><a href="{{ path('day_offer')}}">{{ offer.name }}</a> </h1>
+    {#<h1><a href="{{ path('day_offer')}}">{{ offer.name }}</a> </h1>#} {# COMMENT: for now avoid this URL to render view #}
     {{ offer.description }}
     <a class="boton" href="#">Comprar</a>
 </section>

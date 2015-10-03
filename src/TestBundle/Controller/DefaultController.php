@@ -22,17 +22,28 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getEntityManager();
 
-        $offer = $em->getRepository('TestBundle:Offer')->findOneBy(array(
-                'city' => $city,
-                'publicationDate' => new \DateTime('today')
-            ));
+        $cityEntity = $em->getRepository('TestBundle:City')->findOneBy(array(
+            'slug' => $city,
+        ));
+        if (!$cityEntity) {
+            throw $this->createNotFoundException(
+                'No se ha encontrado ninguna ciudad con el atributo slug = ' . $city);
+        }
 
+        $offer = $em->getRepository('TestBundle:Offer')->findOneBy(array(
+                'city' => $cityEntity, // you must search by a city instance, not by a slug string because offers are not related to cities by his slug...
+                'publicationDate' => new \DateTime('today') // be careful here, because today returns a '00:00:00' time but in your fixtures you are setting '23:59:59' time
+            ));
         if (!$offer) {
             throw $this->createNotFoundException(
                 'No se ha encontrado ninguna oferta del día en la ciudad seleccionada');
         }
 
-        return $this->render('TestBundle:Default:front.html.twig', array('offer' => $offer));
+        return $this->render('TestBundle:Default:front.html.twig', array(
+                'offer' => $offer,
+                'currentCity' => $city,
+            )
+        );
     }
 
     public function staticAction($page)

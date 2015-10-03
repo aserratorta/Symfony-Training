@@ -65,7 +65,7 @@ class Offers extends AbstractFixture implements FixtureInterface, OrderedFixture
                 }
 
                 $publicationDate = new \DateTime($date);
-                $publicationDate->setTime(23, 59, 59);
+                $publicationDate->setTime(0, 0, 0); // this is a really mess
 
                 // Se debe clonar el valor de la fechaPublicacion porque si se usa directamente
                 // el método ->add(), se modificaría el valor original, que no se guarda en la BD
