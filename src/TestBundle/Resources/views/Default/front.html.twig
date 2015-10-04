@@ -1,78 +1,16 @@
-<header>
-    <h1>OFERTES</h1>
-    <nav>
-        <ul>
-            <li><a href="{{  path('front', {city: currentCity} ) }}">Oferta del dia</a></li>
-            <li><a href="#">Ofertes recents</a></li>
-            <li><a href="#">Les meves ofertes</a></li>
-        </ul>
-    </nav>
-</header>
+{% extends '::frontend.html.twig' %}
 
-<footer>
-    &copy; {{  'now' |date('Y') }}-
-    <a href="{{ path('static_page', {'page':'help'}) }}">
-        Ajuda
-    </a>
-    <a href="{{ path('static_page', {'page':'contact'}) }}">
-        Contacte
-    </a>
-    <a href="{{ path('static_page', {'page':'privacity'}) }}">
-        Privacitat
-    </a>
-    <a href="{{ path('static_page', {'page':'aboutus'}) }}">
-        Sobre natros
-    </a>
-</footer>
+{% block title %}Symfony, cada dia ofertes increibles a la teua ciutat
+    amb descomptes de fins el 90%{% endblock %}
+{% block id 'front' %}
 
-<section class="description">
-    {#<h1><a href="{{ path('day_offer')}}">{{ offer.name }}</a> </h1>#}
-    {# COMMENT: for now avoid this URL to render view #}
-    {{ offer.description }}
-    <a class="boton" href="#">Comprar</a>
-</section>
+{% block article %}
+    {% include 'TestBundle:Default:includes/offer.html.twig' %}
+{% endblock %}
 
-<section class="gallery">
-    <img alt="Offer's picture" src="{{ asset(imagesfolder ~ offer.picture) }}">
+{% block aside %}
 
-    <p class="price">{{ offer.price }} &euro; <span>{{ offer.discount }}</span></p>
-
-    <p><strong>Condicions:</strong> {{ offer.conditions }}</p>
-</section>
-
-<section class="estate">
-    <div class="time">
-        <strong>Manquen</strong>: {{  offer.expirationDate | date() }}
-    </div>
-
-    <div class="shopping">
-        <strong>Compres</strong>: {{ offer.shopping }}
-    </div>
-
-    <div class="faltan">
-        {% set faltan = offer.threshold - offer.shopping %}
-        {% if faltan > 0 %}
-            Falten <strong>{{ faltan }} shopping</strong> <br/>
-            per a activar la oferta
-        {% else %}
-            <strong>Oferta activada</strong> per superar les
-            <strong>{{ offer.threshold }}</strong> compres necessàries
-        {% endif %}
-    </div>
-</section>
-
-<section class="address">
-    <h2>Disfruti de l'oferta a</h2>
-    <p>
-        <a href="#">{{ offer.shop.name }}</a>
-        {{ offer.shop.address }}
-    </p>
-</section>
-
-<section class="shop">
-    <h2>Sobre la tenda</h2>
-    {{ offer.shop.description }}
-</section>
+{% endblock %}
 
 
 

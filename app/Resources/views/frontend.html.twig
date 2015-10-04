@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% set ChosenCity = app.request.attributes.has('city')
+{% set chosenCity = app.request.attributes.has('city')
         ? app.request.attributes.get('city')
         : defaultcity
 %}
@@ -17,14 +17,15 @@
 
 {% block body %}
 <header>
-    <h1><a href="{{ path('front', { 'city': ChosenCity }) }}">Symfony</a></h1>
+    <h1><a href="{{ path('front', { 'city': chosenCity }) }}">Symfony</a></h1>
     <nav>
         <ul>
-            <li><a href="{{ path('front') }}">Oferta del dia</a></li>
-            <li><a href="{{ path('#') }}">Ofertas recents</a></li>
+            <li><a href="{{ path('front', { 'city': chosenCity }) }}">Oferta del dia</a></li>
+            {#<li><a href="{{ path('#') }}">Ofertas recents</a></li>
             <li><a href="{{ path('#') }}">Les meves ofertes</a></li>
 
-            <li>{% render "TestBundle:Default:cityList" %}</li>
+            <li>{% render "TestBundle:Default:cityList"
+                with { 'city': chosenCity } %}</li>#}
         </ul>
     </nav>
 </header>

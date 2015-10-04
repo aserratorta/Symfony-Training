@@ -69,8 +69,7 @@ class DefaultController extends Controller
             'TestBundle:Default:cityList.html.twig',
             array(
                 'currentCity' => $city,
-                'cities' => $cities
-            )
+                'cities' => $cities)
         );
     }
 
