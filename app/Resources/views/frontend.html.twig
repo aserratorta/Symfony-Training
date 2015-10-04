@@ -2,7 +2,8 @@
 
 {% set ChosenCity = app.request.attributes.has('city')
         ? app.request.attributes.get('city')
-        : defaultcity %}
+        : defaultcity
+%}
 
 {% block stylesheets %}
     {% stylesheets '@TestBundle/Resources/public/css/normalizar.css'

@@ -15,3 +15,7 @@ static_page:
 change_city:
     pattern: /city/change-to-{city}
     defaults: { _controller: TestBundle:Default:change }
+
+offer:
+    pattern: /{city}/offers/{slug}
+    defaults: { _controller: TestBundle:Default:offer }

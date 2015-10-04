@@ -1,0 +1,29 @@
+<section class="description">
+    <h1><a href="{{ path('offer', { 'city': offer.city.slug, 'slug' :
+            offer.slug }) }}">{{ offer.name }}</a></h1>
+
+    {{ oferta.description }}
+
+        <a class="button" href="#">Comprar</a>
+</section>
+
+<section class="gallery">
+    <img alt="Offer's picture" src="{{ asset(imagesfolder ~ offer.picture) }}">
+
+    <p class="price">{{ offer.price }} &euro; <span>{{ oferta.discount) }}</span></p>
+
+    <p><strong>Conditions:</strong> {{ offer.conditions }}</p>
+</section>
+
+<section class="direction">
+    <h2>Disfruta de la oferta a</h2>
+    <p>
+        <a href="#">{{ offer.shop.name }}</a>
+        {{ offer.shop.adress }}
+    </p>
+</section>
+
+<section class="shop">
+    <h2>Sobre la tenda</h2>
+    {{ offer.shop.description }}
+</section>

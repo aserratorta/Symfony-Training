@@ -2,7 +2,7 @@
     {% for city in cities %}
     <option value="{{ city.slug }}"
             data-url="{{ url('change_city',{ 'city': city.slug}) }}"
-            {{ currentCity == city.slug ? 'selected="' : '' }}>
+            {{ currentCity == city.slug ? 'selected="selected"' : '' }}>
         {{ city.name }}
     </option>
     {% endfor %}

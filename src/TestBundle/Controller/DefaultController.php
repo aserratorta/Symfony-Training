@@ -5,7 +5,6 @@ namespace TestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TestBundle\Entity\Offer;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -74,5 +73,18 @@ class DefaultController extends Controller
             )
         );
     }
+
+    public function offerAction($city, $slug)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $offer = $em->getRepository('TestBundle:Offer')
+                    ->findOffer($city, $slug);
+
+        return $this->render('TestBundle:Default:detail.html.twig' , array(
+            'offer'=> $offer
+        ));
+    }
+
+
 
 }
