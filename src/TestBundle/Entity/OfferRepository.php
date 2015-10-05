@@ -33,4 +33,18 @@ AND c.slug = :city');
 
         return $query->getSingleResult();
     }
+
+    public function findLinked($city)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery('SELECT o, c FROM TestBundle:Offer o
+JOIN o.city c WHERE o.checked = true AND o.publicationDate <= : date AND
+c.slug != :city ORDER BY o.publicationDate DESC');
+        $query->setMaxResults(5);
+        $query->setParameter('city', $city);
+        $query->setParameter('date', new \DateTime('today'));
+
+        return $query->getResult();
+    }
 }

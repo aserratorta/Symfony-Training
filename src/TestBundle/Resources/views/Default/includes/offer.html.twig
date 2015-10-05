@@ -2,7 +2,7 @@
     <h1><a href="{{ path('offer', { 'city': offer.city.slug, 'slug' :
             offer.slug }) }}">{{ offer.name }}</a></h1>
 
-    {{ offer.description }}
+    {{ offer.description | truncate(100, true)}}
 
         <a class="button" href="#">Comprar</a>
 </section>

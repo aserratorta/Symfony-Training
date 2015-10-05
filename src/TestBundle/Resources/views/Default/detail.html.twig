@@ -8,5 +8,16 @@
 {% endblock %}
 
 {% block aside %}
+    {{ parent() }}
+
+    <section id="linked">
+        <h2>Ofertes en altres ciutats</h2>
+        <ul>
+            {% for offer in linked %}
+            <li>{{ offer.city.name }}: <a href="{{ path('offer',{
+            'city': offer.city.slug, 'slug': offer.slug})}}">{{ offer.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
 
 {% endblock %}

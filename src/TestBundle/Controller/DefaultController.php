@@ -78,9 +78,12 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $offer = $em->getRepository('TestBundle:Offer')
                     ->findOffer($city, $slug);
+        $linked = $em->getRepository('TestBundle:Offer')
+                     ->findLinked($city);
 
         return $this->render('TestBundle:Default:detail.html.twig' , array(
-            'offer'=> $offer
+            'offer'=> $offer,
+            'linked' => $linked
         ));
     }
 
