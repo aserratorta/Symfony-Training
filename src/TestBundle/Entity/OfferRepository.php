@@ -24,7 +24,7 @@ class OfferRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT o,c, s FROM TestBundle:Offer
+        $query = $em->createQuery('SELECT o, c, s FROM TestBundle:Offer
 o JOIN o.city c JOIN o.shop s WHERE o.checked = true AND o.slug = :slug
 AND c.slug = :city');
         $query->setParameter('slug' , $slug);
@@ -47,4 +47,19 @@ c.slug != :city ORDER BY o.publicationDate DESC');
 
         return $query->getResult();
     }
+
+    public function findRecent($city_id)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery('SELECT o, t FROM TestBundle:City o
+JOIN o.shop s WHERE o.checked = true AND o.publication_date < :date AND
+o.city = :id ORDER BY o.publication_date DESC');
+        $query->setMaxResults(5);
+        $query->setParameter('id', $city_id);
+        $query->setParameter('date', new \DateTime('today'));
+
+        return $query->getResult();
+    }
+
 }

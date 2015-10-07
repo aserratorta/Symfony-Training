@@ -19,3 +19,7 @@ change_city:
 offer:
     pattern: /{city}/offers/{slug}
     defaults: { _controller: TestBundle:Default:offer }
+
+recent_cities:
+    pattern: /{city}/recent
+    defaults: { _controller: TestBundle:Default:recent }

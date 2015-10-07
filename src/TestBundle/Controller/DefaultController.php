@@ -87,6 +87,24 @@ class DefaultController extends Controller
         ));
     }
 
+    public function recentAction($city)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
 
+        $city = $em->getRepository('TestBundle:City')
+            ->findOneBySlug($city);
+        $near = $em->getRepository('TestBundle:City')
+            ->findNear($city->getId());
+        $offers = $em->getRepository('TestBundle:City')
+            ->findRecent($city->getId());
+
+        return $this->render('TestBundle:Default:recent.html.twig',
+            array(
+                'city'=>$city,
+                'near'=>$near,
+                'offers'=>$offers
+            )
+        );
+    }
 
 }

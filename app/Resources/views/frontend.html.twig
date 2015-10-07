@@ -21,8 +21,8 @@
     <nav>
         <ul>
             <li><a href="{{ path('front', { 'city': chosenCity }) }}">Oferta del dia</a></li>
-            {#<li><a href="{{ path('#') }}">Ofertas recents</a></li>
-            <li><a href="{{ path('#') }}">Les meves ofertes</a></li>
+            <li><a href="{{ path('recent_cities', { 'city': chosenCity }) }}">Ofertes recents</a></li>
+            {#<li><a href="{{ path('#') }}">Les meves ofertes</a></li>
 
             <li>{% render "TestBundle:Default:cityList"
                 with {'city': chosenCity} %}</li>#}
