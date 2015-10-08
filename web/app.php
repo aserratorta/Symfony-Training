@@ -5,6 +5,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
+// If you don't want to setup permissions the proper way, just uncomment the following PHP line
+// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+umask(0000);
+
 // Enable APC for autoloading to improve performance.
 // You should change the ApcClassLoader first argument to a unique prefix
 // in order to prevent cache key conflicts with other applications
