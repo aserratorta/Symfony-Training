@@ -52,9 +52,9 @@ c.slug != :city ORDER BY o.publicationDate DESC');
     {
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT o, t FROM TestBundle:City o
-JOIN o.shop s WHERE o.checked = true AND o.publication_date < :date AND
-o.city = :id ORDER BY o.publication_date DESC');
+        $query = $em->createQuery('SELECT o, s FROM TestBundle:Offer o
+JOIN o.shop s WHERE o.checked = true AND o.publicationDate < :date AND
+o.city = :id ORDER BY o.publicationDate DESC');
         $query->setMaxResults(5);
         $query->setParameter('id', $city_id);
         $query->setParameter('date', new \DateTime('today'));

@@ -95,7 +95,7 @@ class DefaultController extends Controller
             ->findOneBySlug($city);
         $near = $em->getRepository('TestBundle:City')
             ->findNear($city->getId());
-        $offers = $em->getRepository('TestBundle:City')
+        $offers = $em->getRepository('TestBundle:Offer')
             ->findRecent($city->getId());
 
         return $this->render('TestBundle:Default:recent.html.twig',

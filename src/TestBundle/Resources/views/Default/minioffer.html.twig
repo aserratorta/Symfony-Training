@@ -1,0 +1,24 @@
+<section class="mini offer">
+    <div class="description">
+        <h2><a href="{{ path('offer', {'city': offer.city.slug, 'slug':
+                offer.slug}) }}">{{ offer.name }}</a></h2>
+
+        {{ offer.description }}
+
+        <a class="button" href="#">Comprar</a>
+
+        <div class="estate">
+            <strong>Falten</strong>: {{ offer.expirationDate }}
+        </div>
+    </div>
+
+    <div class="gallery">
+        <img alt="Offer's picture" src="{{ asset('uploads/images/' ~
+        offer.picture) }}">
+
+        <p class="price">{{ offer.price }} &euro; <span>{{
+                discount(offer.price, offer.discount)}}</span></p>
+
+        <p>Disfruta d'aquest oferta en <a href="#">{{ offer.shop.name }}</a></p>
+    </div>
+</section>

@@ -7,7 +7,7 @@ use TestBundle\Util\Util;
 
 /**
  * @ORM\Table(name="offer")
- * @ORM\Entity(repositoryClass="\TestBundle\Entity\OfferRepository")
+ * @ORM\Entity(repositoryClass="TestBundle\Entity\OfferRepository")
  */
 class Offer
 {
