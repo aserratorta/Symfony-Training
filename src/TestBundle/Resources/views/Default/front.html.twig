@@ -1,15 +1,54 @@
 {% extends '::frontend.html.twig' %}
 
-{% block title %}Symfony, cada dia ofertes increibles a la teua ciutat
-    amb descomptes de fins el 90%{% endblock %}
-{% block id 'front' %}
+{% block title %}Tenda {{ shop.name }}{% endblock %}
+{% block id 'shop' %}
 
 {% block article %}
-    {% include 'TestBundle:Default:includes/offer.html.twig' %}
+    <section id="descripció">
+        <h1>{{ shop.name }}</h1>
+        <p>{{ shop.description }}</p>
+    </section>
+
+    <section id="últimes">
+        <h2>úotimes ofertes publicades</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Offer</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Shopping</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offer in offers %}
+                <tr>
+                    <td>{{ offer.publication.Date | date() }}</td>
+                    <td><a href="{{ path('offer', {'city': offer.city.slug,
+                        'slug': offer.slug}) }}">{{ offer.name }}</a></td>
+                    <td>{{ offer.price }} &euro;</td>
+                    <td>{{ offer.discount }} &euro</td>
+                    <td>{{ offer.shopping }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
 
 {% block aside %}
+    {{ parent() }}
 
+    <section id="pròximes">
+        <h2>Altres tendes a {{ shop.city.name }}</h2>
+        <ul>
+            {% for shop in near %}
+            <li><a href="{{ path('front_shop', {'city': shop.city.slug,
+                    'shop': shop.slug}) }}">{{ shop.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}
 
 

@@ -5,44 +5,37 @@ namespace TestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TestBundle\Entity\Offer;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
-    public function frontAction($city = null)
+    public function frontAction($city, $shop)
     {
-        if (null == $city) {
-            $city = $this->container
-                         ->getParameter('symfony.defaultcity');
-
-            return new RedirectResponse(
-                $this->generateUrl('front', array('city' => $city))
-            );
-        }
-
         $em = $this->getDoctrine()->getEntityManager();
 
-        $cityEntity = $em->getRepository('TestBundle:City')->findOneBy(array(
-            'slug' => $city,
+        $city = $em->getRepository('TestBundle:City')->findOneBySlug($city);
+
+        $shop = $em->getRepository('TestBundle:Shop')->findByOne(array(
+            'slug'=>$shop,
+            'city'=>$city->getId()
         ));
-        if (!$cityEntity) {
-            throw $this->createNotFoundException(
-                'No se ha encontrado ninguna ciudad con el atributo slug = ' . $city);
+
+        if (!$shop) {
+            throw $this->createNotFoundException( 'No existeix aquesta tenda ');
         }
 
-        $offer = $em->getRepository('TestBundle:Offer')->findOneBy(array(
-                'city' => $cityEntity, // you must search by a city instance,
-                // not by a slug string because offers are not related to cities by his slug...
-                'publicationDate' => new \DateTime('today') // be careful here,
-                // because today returns a '00:00:00' time but in your fixtures you are setting '23:59:59' time
-            ));
-        if (!$offer) {
-            throw $this->createNotFoundException(
-                'No se ha encontrado ninguna oferta del día en la ciudad seleccionada');
-        }
+        $offer = $em->getRepository('TestBundle:Offer')
+            ->findLastPublishedOffer($shop->getId());
+
+        $near = $em->getRepository('TestBundle:Default:front.html.twig')->findNear(
+            $shop->getSlug(),
+            $shop->getCity()->getSlug()
+        );
 
         return $this->render('TestBundle:Default:front.html.twig', array(
+                'shop' => $shop,
                 'offer' => $offer,
-                'currentCity' => $city,
+                'near' => $near
             )
         );
     }

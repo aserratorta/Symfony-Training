@@ -23,3 +23,7 @@ offer:
 recent_cities:
     pattern: /{city}/recent
     defaults: { _controller: TestBundle:Default:recent }
+
+front_shop:
+    pattern: /{city}/shops/{shop}
+    defaults: { _controller: TestBundle:Default:front }
