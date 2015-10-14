@@ -22,9 +22,9 @@ class DefaultController extends Controller
         }
 
         $offer = $em->getRepository('TestBundle:Offer')
-            ->findLastPublishedOffer($shop->getId());
+            ->findLastPublishedOffers($shop->getId());
 
-        $near = $em->getRepository('TestBundle:Default:front.html.twig')->findNear(
+        $near = $em->getRepository('TestBundle:Shop')->findNear(
             $shop->getSlug(),
             $shop->getCity()->getSlug()
         );
