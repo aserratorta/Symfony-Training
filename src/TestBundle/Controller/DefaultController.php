@@ -12,13 +12,10 @@ class DefaultController extends Controller
     public function frontAction($city, $shop)
     {
         $em = $this->getDoctrine()->getEntityManager();
-
-        $city = $em->getRepository('TestBundle:City')->findOneBySlug($city);
-
-        $shop = $em->getRepository('TestBundle:Shop')->findByOne(array(
-            'slug'=>$shop,
-            'city'=>$city->getId()
-        ));
+        $cityEntity = $em->getRepository('TestBundle:City')->findOneBy(array('slug' => $city));
+        $shopsManager = $em->getRepository('TestBundle:Shop');
+        $parameter =  array('slug' => $shop, 'city' => $cityEntity->getId());
+        $shop = $shopsManager->findOneBy($parameter);
 
         if (!$shop) {
             throw $this->createNotFoundException( 'No existeix aquesta tenda ');
