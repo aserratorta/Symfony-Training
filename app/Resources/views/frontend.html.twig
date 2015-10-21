@@ -17,11 +17,14 @@
 
 {% block body %}
 <header>
-    <h1><a href="{{ path('front', { 'city': chosenCity }) }}">Symfony</a></h1>
+    {#<h1><a href="{{ path('front', { 'city': chosenCity }) }}">Symfony</a></h1>#}
+    <h1><a href="{ path( 'front_shop' )}">Symfony</a></h1>
     <nav>
         <ul>
-            <li><a href="{{ path('front', { 'city': chosenCity }) }}">Oferta del dia</a></li>
-            <li><a href="{{ path('recent_cities', { 'city': chosenCity }) }}">Ofertes recents</a></li>
+           <li><a href="{{ path('recent_cities', { 'city': chosenCity }) }}">Ofertes recents</a></li>
+           {#<li><a href="{{ path('offer', { 'city': chosenCity }) }}">Oferta del dia</a></li>#}
+            {# <li><a href="{{ path('front_shop', { 'city': chosenCity }) }}">Oferta del dia</a></li>#}
+           {# <li><a href="{{ path('front_shop', { 'city': chosenCity }) }}">Oferta del dia</a></li>
             {#<li><a href="{{ path('#') }}">Les meves ofertes</a></li>
 
             <li>{% render "TestBundle:Default:cityList"

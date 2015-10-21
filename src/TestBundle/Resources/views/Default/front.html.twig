@@ -10,7 +10,7 @@
     </section>
 
     <section id="últimes">
-        <h2>úotimes ofertes publicades</h2>
+        <h2>últimes ofertes publicades</h2>
         <table>
             <thead>
                 <tr>
@@ -22,9 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for offer in offers %}
+                {% for offer in offer %}
                 <tr>
-                    <td>{{ offer.publication.Date | date() }}</td>
+                    <td>{{ offer.publicationDate | date() }}</td>
                     <td><a href="{{ path('offer', {'city': offer.city.slug,
                         'slug': offer.slug}) }}">{{ offer.name }}</a></td>
                     <td>{{ offer.price }} &euro;</td>

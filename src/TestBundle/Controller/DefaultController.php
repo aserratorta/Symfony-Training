@@ -21,7 +21,7 @@ class DefaultController extends Controller
             throw $this->createNotFoundException( 'No existeix aquesta tenda ');
         }
 
-        $offer = $em->getRepository('TestBundle:Offer')
+        $offer = $em->getRepository('TestBundle:Shop')
             ->findLastPublishedOffers($shop->getId());
 
         $near = $em->getRepository('TestBundle:Shop')->findNear(
