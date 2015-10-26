@@ -1,0 +1,19 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Últimes ofertes que has comprat{% endblock %}
+{% block id 'shopping' %}
+
+{% block article %}
+    <h1>{{ block('title') }}</h1>
+
+    {% for shopping in shopping %}
+        {% include 'TestBundle:Default:includes/minioffer.html.twig'
+        with { 'offer': shopping.offer}%}
+    {% endfor %}
+{% endblock %}
+
+{% block aside %}
+    {#...#}
+{% endblock %}
+
+

@@ -1,3 +1,10 @@
+{% set expirated=offer.expirationDate|date('YmdHis') < 'now'|date('YmdHis') %}
+{% set bought = bought |default(false) %}
+
+{% if not expirated and not bought %}
+    <a class="button" href="#">Comprar</a>
+{% endif %}
+
 <section class="mini offer">
     <div class="description">
         <h2><a href="{{ path('offer', {'city': offer.city.slug, 'slug':

@@ -27,3 +27,7 @@ recent_cities:
 front_shop:
     pattern: /{city}/shops/{shop}
     defaults: { _controller: TestBundle:Default:front }
+
+user_shopping:
+    pattern: /shopping
+    defaults: {_controller: TestBundle:Default:shopping}

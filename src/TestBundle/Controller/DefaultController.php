@@ -97,4 +97,17 @@ class DefaultController extends Controller
         );
     }
 
+    public function shoppingAction()
+    {
+        $user_id = 1;
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $shopping = $em->getRepository('TestBundle:User')
+            ->findAllShopping($user_id);
+
+        return $this->render('TestBundle:Default:shopping.html.twig', array(
+            'shopping => $shopping'
+        ));
+    }
+
 }
