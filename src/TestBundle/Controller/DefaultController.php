@@ -106,7 +106,7 @@ class DefaultController extends Controller
             ->findAllShopping($user_id);
 
         return $this->render('TestBundle:Default:shopping.html.twig', array(
-            'shopping => $shopping'
+            'shopping' => $shopping
         ));
     }
 

@@ -7,8 +7,10 @@
     <h1>{{ block('title') }}</h1>
 
     {% for shopping in shopping %}
-        {% include 'TestBundle:Default:includes/minioffer.html.twig'
-        with { 'offer': shopping.offer}%}
+        {% include 'TestBundle:Default:includes/minioffer.html.twig' with {
+        'offer':        shopping.offer,
+        'bought':       true,
+        'shoppingDate': shopping.date }%}
     {% endfor %}
 {% endblock %}
 
