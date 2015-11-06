@@ -4,11 +4,11 @@
 
     {{ offer.description | truncate(100, true)}}
 
-        <a class="button" href="#">Comprar</a>
+        <a class="button" href="#">Crompra</a>
 </section>
 
 <section class="gallery">
-    <img alt="Offer's picture" src="{{ asset(imagesfolder ~ offer.picture) }}">
+    <img alt="Offer's picture" src="{{ asset('/uploads/images/' ~ offer.picture) }}">
 
     <p class="price">{{ offer.price }} &euro; <span>{{ offer.discount }}</span></p>
 

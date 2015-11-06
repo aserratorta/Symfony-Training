@@ -5,8 +5,8 @@
 
 {% block article %}
     <h1>{{ block('title') }}</h1>
-
-    {% for shopping in shopping %}
+    hit {{ shoppings | length }}
+    {% for shopping in shoppings %}
         {% include 'TestBundle:Default:includes/minioffer.html.twig' with {
         'offer':        shopping.offer,
         'bought':       true,

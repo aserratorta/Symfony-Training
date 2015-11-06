@@ -6,11 +6,11 @@
 {% block article %}
     <h1>Ofertes recents a <strong<{{ city.name }}<strong></strong></h1>
 
-    {#{% for offer in offers %}
+    {% for offer in offers %}
         {% include 'TestBundle:Default:minioffer.html.twig' %}
     {% else %}
         <p>Esta ciutat encara no ha publicat cap oferta</p>
-    {% endfor %}#}
+    {% endfor %}
 {% endblock %}
 
 {% block aside %}
@@ -20,7 +20,7 @@
         <h2>Ofertes en altres ciutats</h2>
         <ul>
             {% for city in near %}
-            <li><a href="{{ path('recent_cities', {'city':city.slug}) }}">{{ city.name }}</a></li>
+            <li><a href="{{ path('recent_cities', {'city':city.slug}) }}">HELLO {{ city.name }}</a></li>
             {% endfor %}
         </ul>
     </section>

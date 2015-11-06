@@ -18,7 +18,7 @@
             {% if bought %}
                 Comprada el {{ shoppingDate | date('d/m/Y') }}
             {% elseif not expirated %}
-                <strong>Falten</strong>: {{ offer.expirationDate |count_down }}
+                {#<strong>Falten</strong>: {{ offer.expirationDate | count_down }}#}
             {% else %}
                 Finalitzada el {{ offer.expirationDate |date('d/m/Y') }}
             {% endif %}
@@ -26,11 +26,9 @@
     </div>
 
     <div class="gallery">
-        <img alt="Offer's picture" src="{{ asset('uploads/images/' ~
-        offer.picture) }}">
+        <img alt="Offer's picture" src="{{ asset('uploads/images/' ~ offer.picture) }}">
 
-        <p class="price">{{ offer.price }} &euro; <span>{{
-                discount(offer.price, offer.discount)}}</span></p>
+        <p class="price">{{ offer.price }} &euro; <span>{#{{ discount(offer.price, offer.discount) }}#}</span></p>
 
         <p>Disfruta d'aquest oferta en <a href="#">{{ offer.shop.name }}</a></p>
     </div>

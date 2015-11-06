@@ -18,7 +18,7 @@ class DefaultController extends Controller
         $shop = $shopsManager->findOneBy($parameter);
 
         if (!$shop) {
-            throw $this->createNotFoundException( 'No existeix aquesta tenda ');
+            throw $this->createNotFoundException( 'No existeix aquesta tenda' );
         }
 
         $offer = $em->getRepository('TestBundle:Shop')
@@ -45,7 +45,7 @@ class DefaultController extends Controller
     public function changeAction($city)
     {
         return new RedirectResponse($this->generateUrl(
-            'front',
+            'static_page',
             array('city'=> $city)
         ));
     }
@@ -102,11 +102,11 @@ class DefaultController extends Controller
         $user_id = 1;
 
         $em = $this->getDoctrine()->getEntityManager();
-        $shopping = $em->getRepository('TestBundle:User')
+        $shoppings = $em->getRepository('TestBundle:User')
             ->findAllShopping($user_id);
 
         return $this->render('TestBundle:Default:shopping.html.twig', array(
-            'shopping' => $shopping
+            'shoppings' => $shoppings
         ));
     }
 
