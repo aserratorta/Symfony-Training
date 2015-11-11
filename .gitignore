@@ -5,6 +5,7 @@ app/config/parameters.ini
 app/config/parameters.yml
 app/cache/*
 app/logs/*
+app/databases/devel.db3
 vendor/*
 web/bundles/*
 web/css/*
